@@ -1,0 +1,57 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/ex?useUnicode=true&characterEncoding=UTF-8
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: utf-8
+#
+#mybatis:
+#  type-aliases-package: com.school.ex.pojo
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mappers/*.xml
+
+mybatis-plus:
+  type-aliases-package: com.school.ex.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapping/*.xml
+#  我是伞兵
+
+logging:
+  level:
+    cn:
+      lzc:
+        user:
+          mapper: debug
+
+server:
+  tomcat:
+    uri-encoding: utf-8
+  port: 8383
+  servlet:
+    session:
+      timeout: 1800
+      cookie:
+        http-only: true
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+alipay:
+  appId: 2021000118611846
+  privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCis7M1tTIRFoxvzS20wy4rNe7kxafEhqCxVUoDjzoXK99Hz1HQirx3fmQSDk7BycwcbHwWeRo7/rFUuy7Gw9DZI1mcCxSw53uWtZvnIGzM/rHCe6Pjcd9eTRPtQnHn+NkEE4u9tCxzR1zzU1X96WEROGms2idiE+8KOz5w3xU4+HHsAffgZ+V8VOsUdS8omVVr0i/3ouhQwUzTaH4NiSy+uRChXNE8jMwqR257a5AEU2cStF8kLBdTb/O3kogsD5+1jYWtqVTqThbEujjA1oZmIRG+dSVp0/Vn0DklJc7o/yzwx/b5ZGX/kuAxA4WV3f7b2nK6KCrWFRzNB0bgQzPFAgMBAAECggEAS3ViaUdXKBu4GGYli492Sy4hVNLi4z+5KWWwBQSZYYPEc26QuFKP5C+nQ8SE/FWWJ5yc1GNoKmkOX4jMwfyxUPOXLMrq1r0VUal62+/q5gw970Aem28FtJu04TYO1BJSvBRAnEQC1ZhEYMnGuRNTJIRwZm1rFI7AL5OYewrLsfaxCYlVJRui3/97omD3+KcCwTDPMQzddowXq66e3fz5LkoJNdZ/fXFmxV14+7uXI1/qCCyrf7Ngw53vYj875CrDc1ueNUYKX0y1MDee0CVA8MzzaPqWH8As5vsciqA8cMv0xjY+HNflFFaXrOB6O2iKcRdaRkgS76TGvAhGM+o3BQKBgQDpLjCkIlrJq9F+2im0c6or1gvkONMUA6y9kw9IANcuX9NCzDm8oVjEUym1xPEl5dNib9XU+i8IxTlCuDVhDxs4WqoZgDrSufD9c/jB9dWlRE4Zt8u96GIaPpvAj2iM6G2qJe3bnzMf2MY+ibHQ8nn7G/6e1Q5XEdjgziKOC9Q7awKBgQCyn9SoGzJgyfdTuDawlprtHDnDqCNd/NXG4iqUc5obLoAh8Kn9A/iKiIHnS6sdOPrSfyb5tSlylr+DjpLlK6NOqvfkix7rZAa22W/IcStNcbhix/CbU3j52dtoZApUu8MdQAQw55Ry6jPhy4Ar2bNSU1IKvrM2/mC3mLiE4O3JjwKBgQCkh2Tmyx7IIaXmHcVDgEFYQOWPGNFG0/j0omkr4vvxysdj4Hn0sNvTWuKZUObeWLW4RTTZ29WIGLD4dMWlQGVyc/aFm8blnTF/hG7HXNBsli+NUfQ+gVOHNRns2sNoeS+32J9mUYRfOjNXOQzwY8bR+cTFCYvev8cJiCk1lP8hFQKBgQCTtVuzD5pfM2QUlPaUnFXM0VRrGTT12cglyIyRae77nz5R0qOfGJOEa1GQpKABcEbpnj/qqgZ2PXZtIY8Tdzx6JyMKmIie+n4a4j9vrzWxuuJQvSmYKDSX17F555ArdYDpRTCyCC5XwJfald+NY17IKyJixEOKrFvqNp4PM7kuvQKBgF6CJXj0c03Nzmg5FrAj3dAjFhv7o5sMAKK26+qaLgXrqOFEwvmlvdc0TLxRCCBbkrfDUNfLDmu9b5ZLKvrkN09xd4WBWUlwbYV+t1jTSOc+K5h50SPA1Mbi6uzfPLrpFhSV76o6q+1LJog9IZhKHrSPVrPURxC29Tu2Hbig/YHC
+  publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAorOzNbUyERaMb80ttMMuKzXu5MWnxIagsVVKA486FyvfR89R0Iq8d35kEg5OwcnMHGx8FnkaO/6xVLsuxsPQ2SNZnAsUsOd7lrWb5yBszP6xwnuj43HfXk0T7UJx5/jZBBOLvbQsc0dc81NV/elhEThprNonYhPvCjs+cN8VOPhx7AH34GflfFTrFHUvKJlVa9Iv96LoUMFM02h+DYksvrkQoVzRPIzMKkdue2uQBFNnErRfJCwXU2/zt5KILA+ftY2FralU6k4WxLo4wNaGZiERvnUladP1Z9A5JSXO6P8s8Mf2+WRl/5LgMQOFld3+29pyuigq1hUczQdG4EMzxQIDAQAB
+  #gateway: https://openapi.alipaydev.com/gateway.do
+  #支付网关配置，这一项是写死的，正式环境是openapi.alipay.com
+  gateway: openapi.alipaydev.com
+  #支付成功之后的回调页面，只是一个友好页面。
+  returnUrl: http://frnqxw.natappfree.cc/return.html
+  #支付成功的接口回调，
+  notifyUrl: http://frnqxw.natappfree.cc/payCharge/fallback
+

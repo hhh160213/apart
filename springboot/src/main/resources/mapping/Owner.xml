@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.ex.dao.OwnerDao">
+
+    <select id="getOwnerByPwd" resultType="owner">
+        select * from owner where tel=#{account} and pwd=#{password}
+    </select>
+
+    <select id="getOwnerByTel" resultType="owner">
+        select * from owner where tel=#{tel}
+    </select>
+
+    <select id="getOwnerList" resultType="com.school.ex.entity.OwnerVO">
+        select o.*,b.car1,b.car2 from owner o left join
+        (select c1.owner_id,c1.owner_name,c1.car_no car1,c2.car_no car2 from car_no c1 LEFT JOIN car_no c2 on c1.owner_id = c2.owner_id group by c1.owner_id having count(c1.owner_id)=1
+        UNION
+        select c1.owner_id,c1.owner_name,c1.car_no car1,c2.car_no car2 from car_no c1 LEFT JOIN car_no c2 on c1.owner_id = c2.owner_id
+        where c1.id &lt; c2.id and c1.car_no!=c2.car_no ) b on o.id = b.owner_id
+        <where>
+            <if test="userName!=''">
+
+               and name like '%${userName}%'
+
+            </if>
+            <if test="tel!=''">
+                and tel like '%${tel}%'
+            </if>
+        </where>
+    </select>
+
+    <select id="getOwnerByApartmentOrDoorId" resultType="owner">
+        select * from owner
+        <if test="apartment!=''">
+            <where>
+                apartment = #{apartment}%
+            </where>
+        </if>
+        <if test="doorId!=''">
+            <where>
+                door_id = ${doorId}
+            </where>
+        </if>
+    </select>
+
+    <select id="getApartmentListByName" resultType="String">
+        select distinct apartment from owner where `name` = #{name}
+    </select>
+
+    <select id="getDoorIdBuApartment" resultType="String">
+        select door_id from owner where apartment = #{apartment}
+    </select>
+</mapper>
